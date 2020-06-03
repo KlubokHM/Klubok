@@ -24,19 +24,20 @@
                                     </h4>
                                     <h5>{{$product ->price}}</h5>
 
-                                    <p>
-                                    <form action="{{route('customer.index.view.basket.add', [$product])}}" method = "POST">
 
+                                    <form action="{{route('customer.index.view.basket.add', [$product])}}" method = "POST">
+                                        <p>
                                             <button type="submit" class="btn btn-primary" role="button">
                                                 В Карзину
                                             </button>
                                             <a href="{{route('customer.index.view.product',[$product->id])}}" class="btn btn-default" role="button">
                                                 Подробнее
                                             </a>
-
+                                        </p>
                                      @csrf
                                     </form>
-                                    </p>
+
+
                                 </div>
                             </div>
                         </div>
