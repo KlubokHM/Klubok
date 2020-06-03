@@ -17,13 +17,12 @@ class BasketController extends Controller
     public function index()
     {
         $order_id = session('order_id');
-        if(is_null($order_id)){
-            $order = Order::create();
-            dump($order->id);
-            session(['order_id' => $order->id]);
-        }else{
+        if(!is_null($order_id)) {
             $order = Order::all()->find($order_id);
+            return view('basket', compact('order'));
         }
+        $order = Order::all()->find($order_id);
+
         return view('basket',compact('order'));
     }
 

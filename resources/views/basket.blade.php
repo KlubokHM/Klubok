@@ -19,7 +19,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @if(!empty($order))
                             @foreach($order->products as $product)
+
+
                                 <tr>
                                 <td>
                                     <a href="{{route('customer.index.view.product',[$product])}}">{{$product->name}}</a>
@@ -49,8 +52,21 @@
                                 <td></td>
                                 <td>{{$order->getFullPrice()}}</td>
                             </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="{{route('customer.index.view.order.form')}}">Оформить заказ</a></td>
+                                @else
+                                    <td></td>
+                                    <td>Корзина пуста</td>
+                                    <td></td>
+                                    <td><a href="{{route('customer.index.view.products')}}">Перейти к Товарам</a></td>
+                            </tr>
                             </tbody>
 
+
+                            @endif
                         </table>
                     </div>
                 </div>
