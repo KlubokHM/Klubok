@@ -19,7 +19,18 @@ class Order extends Model
     }
 
     protected $fillable = [
-        'id'
+        'id',
+        'status',
+        'user_id',
+        'first_name',
+        'second_name',
+        'last_name',
+        'email',
+        'city',
+        'street',
+        'building',
+        'room_number',
+        'index',
     ];
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
-/*
- * Просмотр
- */
+
 Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/','LandingController@index')->name('customer.index.view');
     Route::get('/product/{id}','LandingController@product')->name('customer.index.view.product');
@@ -26,7 +24,11 @@ Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/basket','BasketController@index')->name('customer.index.view.basket');
     Route::post('/basket/add/{id}', 'BasketController@add')->name('customer.index.view.basket.add');
     Route::post('/basket/remove/{id}', 'BasketController@remove')->name('customer.index.view.basket.remove');
-    Route::get('/order/form','OrederController@index')->name('customer.index.view.order.form');
+        Route::group(['middleware'=>'auth'], function () {
+            Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
+            Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
+            Route::get('/home', 'HomeController@index')->name('home');
+        });
 
 });
 
