@@ -14,7 +14,7 @@ class ProductTableSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'category_id' => 1,
+                'categories_id' => 1,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -23,7 +23,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'category_id' => 3,
+                'categories_id' => 3,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -32,7 +32,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'category_id' => 1,
+                'categories_id' => 1,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -41,7 +41,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'category_id' => 4,
+                'categories_id' => 4,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -50,7 +50,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'category_id' => 3,
+                'categories_id' => 3,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -59,7 +59,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'category_id' => 1,
+                'categories_id' => 1,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -68,7 +68,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 8,
-                'category_id' => 2,
+                'categories_id' => 2,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),
@@ -77,7 +77,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'id' => 9,
-                'category_id' => 1,
+                'categories_id' => 1,
                 'name' => Str::random(10),
                 'slug'=> Str::random(10),
                 'sub_name' => Str::random(10),

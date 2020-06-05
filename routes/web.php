@@ -27,15 +27,12 @@ Route::namespace('Klubok\Customer')->group(function(){
         Route::group(['middleware'=>'auth'], function () {
             Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
-            Route::get('/home', 'HomeController@index')->name('home');
+            Route::get('/myOrders', 'HomeController@index')->name('customer.index.view.myOrders');
         });
 
 });
 
-/*
- * работа с карзиной
- *
- */
+
 Route::namespace('Klubok\Customer')->group(function(){
 
 });

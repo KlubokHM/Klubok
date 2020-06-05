@@ -14,9 +14,9 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->tinyInteger('status')->default(0);
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('first_name')->nullable();
             $table->string('second_name')->nullable();
             $table->string('last_name')->nullable();
@@ -41,3 +41,5 @@ class CreateOrdersTable extends Migration
         Schema::dropIfExists('orders');
     }
 }
+
+

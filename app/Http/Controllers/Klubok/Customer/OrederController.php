@@ -29,7 +29,7 @@ class OrederController extends Controller
         $order = Order::all()->find($order_id);
         $user = Auth::user();
         $user_id = $user->id;
-        $order-> user_id = $user_id;
+        $order->user_id = $user_id;
         $order-> status = 1;
         $data = $request->all();
         $result =$order->fill($data)->save();

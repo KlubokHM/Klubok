@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     public function category(){
-        return $this->belongsTo(CategoryModel::class);
+        return $this->belongsTo(Categories::class);
     }
     public function getPriceForCount(){
         if(!is_null($this->pivot)){
@@ -16,3 +16,6 @@ class Product extends Model
         return $this->price;
 }
 }
+/*
+ *
+ */
