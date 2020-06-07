@@ -35,6 +35,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="phone" class="col-md-4 col-form-label text-md-right">Фамилия</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="tel" class="form-control" name="phone"   required autocomplete="phone" autofocus>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
                                 <div class="col-md-6">

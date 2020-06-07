@@ -16,15 +16,32 @@
                     @if(is_null($orders))
                         @else
 
-                            @foreach($orders as $order)
-                                <h4>Заказ - {{$order->id}}</h4>
-                                <echo>{{$order->first_name}}</echo><br>
-                                <h5>товары</h5>
-                                @foreach($order->products as $product)
-                                    <echo>{{$product->name}}</echo><br>
-                                @endforeach
-                                <br>
-                            @endforeach
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Заказа</th>
+                                        <th scope="col">от</th>
+                                        <th scope="col">Сумма:</th>
+                                        <th scope="col">Tовары</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($orders as $order)
+                                    <tr>
+                                        <th scope="row">{{$order->id}}</th>
+                                        <td> {{$order->updated_at}}</td>
+                                        <td> {{$order->final_price}}</td>
+                                        <td>
+                                            @foreach($order->products as $product)
+                                                {{$product -> name}}<br>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+
                         @endif
 
                 </div>

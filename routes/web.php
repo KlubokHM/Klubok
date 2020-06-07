@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'Klubok\Admin\Globals'
+],function (){
+    Route::group(['middleware' => 'is_admin'], function (){
+        Route::get('/all_orders','OrderController@index')->name('admin.index.view.orders');
+    });
+});
+
+Route::get('send', 'MailController@send')->name('send');
+
 
 Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/','LandingController@index')->name('customer.index.view');

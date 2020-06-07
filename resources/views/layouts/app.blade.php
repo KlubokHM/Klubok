@@ -68,10 +68,34 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('customer.index.view.myOrders') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('my-orders').submit();">
+                                        Мои Заказы
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <form id="my-orders" action="{{ route('customer.index.view.myOrders') }}" method="get" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
+                                        <a class="dropdown-item" href="{{ route('admin.index.view.orders') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('admin-form').submit();">
+                                            Панель администратора
+                                        </a>
+                                        <form id="admin-form" action="{{ route('admin.index.view.orders') }}" method="get" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @endif
+                                    @if(\Illuminate\Support\Facades\Auth::user()->isModerator())
+                                            moderator
+                                    @//elseif(()&&())
+
+                                    @endif
                                 </div>
                             </li>
                         @endguest
