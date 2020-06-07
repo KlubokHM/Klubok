@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::group([
     'middleware' => 'auth',
@@ -35,10 +35,12 @@ Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/basket','BasketController@index')->name('customer.index.view.basket');
     Route::post('/basket/add/{id}', 'BasketController@add')->name('customer.index.view.basket.add');
     Route::post('/basket/remove/{id}', 'BasketController@remove')->name('customer.index.view.basket.remove');
-        Route::group(['middleware'=>'auth'], function () {
+        Route::group(['middleware'=>'auth',], function () {
+            Route::group(['middleware'=>'verified',], function () {
             Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
             Route::get('/myOrders', 'HomeController@index')->name('customer.index.view.myOrders');
+            });
         });
 
 });
