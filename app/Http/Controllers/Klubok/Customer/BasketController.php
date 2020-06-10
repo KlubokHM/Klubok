@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Klubok\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Model\Categories;
+use App\Model\Institution;
 use App\Model\Order;
+use App\Model\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\In;
 
 
 class BasketController extends Controller
@@ -35,12 +39,16 @@ class BasketController extends Controller
             }else{
                 $order = Order::all()->find($order_id);
             }
+            $category_id = Product::all()->find($productId)->category->id;
+            $institution_id = Categories::all()->find($category_id)->institution->id;
+
             if($order->products->contains($productId)){
                 $pivotRow = $order->products()->where('product_id',$productId)->first()->pivot;
                 $pivotRow->count++;
                 $pivotRow->update();
             }else{
                 $order->products()->attach($productId);
+                $order->institutions()->attach($institution_id);
             }
 
             return redirect()->route('customer.index.view.basket');

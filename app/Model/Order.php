@@ -9,6 +9,9 @@ class Order extends Model
     public function products(){
         return $this->belongsToMany(Product::class)->withPivot('count')->withTimestamps();
     }
+    public function institutions(){
+        return $this->belongsToMany(Institution::class);
+    }
 
     public function author(){
         return $this->belongsTo(User::class);

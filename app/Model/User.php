@@ -10,7 +10,9 @@ class User extends Authenticatable implements MustVerifyEmail
 {
 
     use Notifiable;
-
+    public function orders(){
+        return $this->hasMany('App\Model\Order');
+    }
     /*
      *
      */
