@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     public function category(){
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo('App\Model\Categories','categories_id');
     }
     public function getPriceForCount(){
         if(!is_null($this->pivot)){

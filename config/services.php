@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'yakassa' => [
+        'test_mode'     => env('YAKASSA_TEST_MODE', true),
+        'shop_id'       => env('YAKASSA_SHOP_ID', ''),
+        'showcase_id'   => env('YAKASSA_SHOWCASE_ID', ''),
+        'shop_password' => env('YAKASSA_SHOP_PASSWORD', ''),
+    ],
+
 ];
