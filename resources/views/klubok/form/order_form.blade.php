@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('bootstrap')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="container">
         <div class="py-1 text-center">

@@ -13,11 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <!-- Салам -->
                     @if(is_null($orders))
                         @else
-
-
                                 <table class="table">
                                     <thead>
                                     <tr>

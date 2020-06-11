@@ -27,9 +27,7 @@
 
                                     <form action="{{route('customer.index.view.basket.add', [$product])}}" method = "POST">
                                         <p>
-                                            <button type="submit" class="btn btn-primary" role="button">
-                                                В Карзину
-                                            </button>
+
                                             <a href="{{route('customer.index.view.product',[$product->id])}}" class="btn btn-default" role="button">
                                                 Подробнее
                                             </a>

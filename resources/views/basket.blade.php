@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('bootstrap')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="container">
             <div class="py-1 text-center">
@@ -29,18 +31,18 @@
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">{{$product->price}}</td>
+                <td data-th="Price">{{$product->price}}.00p</td>
                 <td data-th="Quantity">
                     <input type="number" class="form-control text-center" value="{{$product->pivot->count}}" disabled>
                 </td>
-                <td data-th="Subtotal" class="text-center">{{$product->getPriceForCount()}}</td>
-                <td class="actions" data-th="">
-                   <form action="{{route('customer.index.view.basket.remove', [$product])}}" method="POST">
+                <td data-th="Subtotal" class="text-center">{{$product->getPriceForCount()}}.00p</td>
+                <td class="actions row">
+                   <form action="{{route('customer.index.view.basket.add', [$product])}}" method="POST">
                        <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-refresh">
                                 @csrf
                            </i></button>
                    </form>
-                    <form action="{{route('customer.index.view.basket.add', [$product])}}" method="POST">
+                    <form action="{{route('customer.index.view.basket.remove', [$product])}}" method="POST">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o">
                                 @csrf
                             </i></button>
@@ -54,7 +56,7 @@
             <tr>
                 <td><a href="{{route('customer.index.view.products')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Вернутся к товарам</a></td>
                 <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>Общая стоимость: {{$order->getFullPrice()}}</strong></td>
+                <td class="hidden-xs text-center"><strong>Общая стоимость: {{$order->getFullPrice()}}.00p</strong></td>
                 <td><a href="{{route('customer.index.view.order.form')}}" class="btn btn-success btn-block">Оплатить<i class="fa fa-angle-right"></i></a></td>
             </tr>
             </tfoot>

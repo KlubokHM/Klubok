@@ -15,98 +15,126 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald&display=swap" rel="stylesheet">
     <!-- Styles -->
-    @yield('more_styles')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('bootstrap')
+    <link href="{{asset('css/style.css') }}" rel="stylesheet" type="text/css">
+
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{route('customer.index.view')}}">
+<header>
+    <div class="top-menu">
+        <ul class="top-menu-list-left ">
+            <li class="top-menu-item_l">
+                <a href="{{route('customer.index.view')}}">
                     ГЛАВНАЯ
                 </a>
-                <a class="navbar-brand" href="{{route('customer.index.view.products')}}">
+            </li>
+            <li class="top-menu-item_l">
+                <a href="{{route('customer.index.view.products')}}">
                     ТОВАРЫ
                 </a>
-                <a class="navbar-brand" href="{{route('customer.index.view.basket')}}">
+            </li>
+            <li class="top-menu-item_l">
+                <a href="#">
+                    МАСТЕР КЛАССЫ
+                </a>
+            </li>
+            <li class="top-menu-item_l">
+                <a href="#">
+                    О НАС
+                </a>
+            </li>
+            <li class="top-menu-item_l">
+                <a href="#">
+                    КОНТАКТЫ
+                </a>
+            </li>
+        </ul>
+        <ul class="top-menu-list-right">
+            <li class="top-menu-item_r">
+                <a href="{{route('customer.index.view.basket')}}">
                     КОРЗИНА
                 </a>
+            </li>
+            @guest
+                <li class="top-menu-item_r">
+                    <a href="{{ route('login') }}">{{ __('ВХОД') }}</a>
+                </li>
+                @if (Route::has('register'))
+                    <li class="top-menu-item_r">
+                        <a href="{{ route('register') }}">{{ __('РЕГИСТРАЦИЯ') }}</a>
+                    </li>
+                @endif
+            @else
+                <li class="top-menu-item_r">
+                    <div class="dropfirst">
+                        <a href="#" class="drop">{{ Auth::user()->name }}</a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('ВХОД') }}</a>
+                        <ul class="dropdown">
+                            <li class="item-dropdown">
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                    {{ __('ВЫЙТИ') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('РЕГИСТРАЦИЯ') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            <li class="item-dropdown">
+                                <a href="{{ route('customer.index.view.myOrders') }}"
+                                   onclick="event.preventDefault();
+                                                             document.getElementById('my-orders').submit();">
+                                    Мои Заказы
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('customer.index.view.myOrders') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('my-orders').submit();">
-                                        Мои Заказы
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <form id="my-orders" action="{{ route('customer.index.view.myOrders') }}" method="get" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                    @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
-                                        <a class="dropdown-item" href="{{ route('admin.index.view.orders') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('admin-form').submit();">
-                                            Панель администратора
-                                        </a>
-                                        <form id="admin-form" action="{{ route('admin.index.view.orders') }}" method="get" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    @endif
-                                    @if(\Illuminate\Support\Facades\Auth::user()->isModerator())
-                                            moderator
-                                    @//elseif(()&&())
-
-                                    @endif
-                                </div>
+                                <form id="my-orders" action="{{ route('customer.index.view.myOrders') }}" method="get"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                            @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
+                                <li class="item-dropdown">
+                                    <a href="{{ route('admin.index.view.orders') }}"
+                                       onclick="event.preventDefault();
+                                                             document.getElementById('admin-form').submit();">
+                                        Панель администратора
+                                    </a>
+                                    <form id="admin-form" action="{{ route('admin.index.view.orders') }}" method="get"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @endif
+                            @if(\Illuminate\Support\Facades\Auth::user()->isModerator())
+                                <li class="item-dropdown">
+                                    Moderator
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
+            @endguest
+        </ul>
+    </div>
+</header>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
+<footer>
+    <div class="info">
+        <div class="info-box">
+
+        </div>
+        <div class="div coperaiting">
+
+        </div>
     </div>
+</footer>
 </body>
 </html>
