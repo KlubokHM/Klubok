@@ -19,4 +19,9 @@ class Institution extends Model
     public function orders(){
         return $this->belongsToMany(Order::class);
     }
+
+    public function products_inst(){
+        return $this->hasMany(Product::class);
+    }
+
 }

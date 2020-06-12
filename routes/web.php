@@ -30,8 +30,9 @@ Route::get('send', 'MailController@send')->name('send');
 Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/','LandingController@index')->name('customer.index.view');
     Route::get('/product/{id}','LandingController@product')->name('customer.index.view.product');
-    Route::get('/category/products','ProductController@index')->name('customer.index.view.products');
-    Route::get('/category/{id}','ProductController@category')->name('customer.index.view.category');
+    Route::get('institutions/category/products','ProductController@index')->name('customer.index.view.products');
+    Route::get('/institutions/{id}','ProductController@institution')->name('customer.index.view.institutions');
+    Route::get('/institutions/category/{id}','ProductController@category')->name('customer.index.view.category');
     Route::get('/basket','BasketController@index')->name('customer.index.view.basket');
     Route::post('/basket/add/{id}', 'BasketController@add')->name('customer.index.view.basket.add');
     Route::post('/basket/remove/{id}', 'BasketController@remove')->name('customer.index.view.basket.remove');
