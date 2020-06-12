@@ -17,11 +17,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(['id','name','price']);
+        $products = Product::all();
         $institutions = Institution::all();
 
         return view('klubok.products',compact('products','institutions'));
 
+    }
+
+    public function institution($id){
+        $products = Institution::all()->find($id)->products_inst;
+        $institutions = Institution::all();
+        return view('klubok.products',compact('products','institutions'));
     }
 
     public function category($id){
@@ -31,11 +37,7 @@ class ProductController extends Controller
 
         }
 
-        public function institution($id){
-        $products = Institution::all()->find($id)->products_inst;
-        $institutions = Institution::all();
-            return view('klubok.products',compact('products','institutions'));
-    }
+
 
 
 

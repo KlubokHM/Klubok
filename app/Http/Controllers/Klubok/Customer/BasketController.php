@@ -7,6 +7,7 @@ use App\Model\Categories;
 use App\Model\Institution;
 use App\Model\Order;
 use App\Model\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 

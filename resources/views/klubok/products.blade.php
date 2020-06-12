@@ -42,11 +42,14 @@
                 </nav>
             </div>
             <div class="product-box">
+                <h3>
+
+                </h3>
                 <div class="products-container id1">
                     @foreach($products as $product)
                         <div class="product">
                             <div class="product-title">
-                                <a href="{{route('customer.index.view.product',[$product ->id])}}">{{$product ->name}}</a>
+                                <a href="{{route('customer.index.view.product',[$product->id])}}">{{$product ->name}}</a>
                             </div>
                             <div class="product-body">
                                 <div class="product-image">
@@ -54,13 +57,13 @@
                                 </div>
                                 <div class="div-product-body-footer">
                                     <div class="product-basket">
-                                        <a href="{{route('customer.index.view.basket.add', [$product])}}"
-                                           onclick="event.preventDefault();
-                                                             document.getElementById('add-form').submit();">
-                                            <img src="{{asset('img/cart.svg')}}" alt="" class="basket">
-                                        </a>
-                                        <form id="add-form" action="{{route('customer.index.view.basket.add', [$product])}}" method="POST"
-                                              style="display: none;">
+
+
+
+                                        <form id="add-form" action="{{route('customer.index.view.basket.add',[$product])}}" method="POST">
+                                            <button type="submit" class="btn btn-warning ">
+                                                <img src="{{asset('img/cart.svg')}}" alt="" class="basket">
+                                            </button>
                                             @csrf
                                         </form>
                                     </div>
@@ -78,5 +81,5 @@
 
 @endsection
 
-@section('scripts')
+
 
