@@ -13,9 +13,9 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->date('email_verified_at');
-        });
+        //Schema::table('users', function (Blueprint $table) {
+          //  $table->date('email_verified_at');
+       // });
     }
 
     /**
