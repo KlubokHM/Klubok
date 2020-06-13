@@ -9,6 +9,16 @@
             <h2>Оформление Заказа</h2>
             <p class="lead"></p>
         </div>
+        <!-- Проверка на ошибки валидации -->
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <ul>{{$error}}</ul>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
             <div class="col-md-10  order-md-1 p-5 container" style="background: #000353; color: #dedee9 !important;">
                 <h4 class="mb-3">Заполните форму</h4>
@@ -85,7 +95,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="room">Квартира</label>
-                            <input class="form-control" id="room" name="room_numder" required>
+                            <input class="form-control" id="room" name="room_number" required>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
                             </div>
