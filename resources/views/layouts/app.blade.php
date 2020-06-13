@@ -55,7 +55,7 @@
         <ul class="top-menu-list-right">
             <li class="top-menu-item_r">
                 <a href="{{route('customer.index.view.basket')}}">
-                    КОРЗИНА
+                    <img src="{{asset('img/cart.svg')}}" alt="" class="checkout">
                 </a>
             </li>
             @guest

@@ -57,9 +57,6 @@
                                 </div>
                                 <div class="div-product-body-footer">
                                     <div class="product-basket">
-
-
-
                                         <form id="add-form" action="{{route('customer.index.view.basket.add',[$product])}}" method="POST">
                                             <button type="submit" class="btn btn-warning ">
                                                 <img src="{{asset('img/cart.svg')}}" alt="" class="basket">

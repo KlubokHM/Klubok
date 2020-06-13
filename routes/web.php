@@ -41,6 +41,8 @@ Route::namespace('Klubok\Customer')->group(function(){
             Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
             Route::get('/myOrders', 'HomeController@index')->name('customer.index.view.myOrders');
+            $methods = ['edit','store','update'];
+            Route::resource('user','userController')->only($methods)->names('user');
             });
 
 

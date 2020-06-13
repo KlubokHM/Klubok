@@ -99,12 +99,14 @@ a:hover {
     opacity: 0;
     transition: 0.3s ease-in-out;
     background: #000353;
+
 }
 .drop{
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
+
 }
 
 .dropfirst:hover .dropdown {
@@ -282,6 +284,10 @@ h2{
     width: 2vw;
 }
 
+.checkout{
+    width: 2vw;
+}
+
 .product-price{
     font-family: 'Oswald', sans-serif;
     font-size: 1vw;
@@ -432,6 +438,80 @@ footer{
 
 }
 
+.profile{
+    max-height: 60vh;
+    width: 70%;
+    padding: 2vw ;
+    margin: 1vw auto;
+    background: #000353;
+
+}
+
+.user-card{
+    padding: 1vw 3vw 1vw 3vw;
+    color: #dedee9;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user-image-block{
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.user-img{
+    z-index: auto;
+    height: 15vw;
+    width: 15vw;
+    margin: 1vw 0 0 0;
+    border-radius: 50%;
+    border: 5px solid #5b7285;
+}
+
+.user-info{
+   padding: 1vw 2vw;
+    background: #5b7285;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h4{
+    color: #dedee9;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5vw;
+    padding:  0;
+    margin: 0;
+    text-align: center;
+}
+
+.info-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.h-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 1vw 2vw ;
+    list-style: none;
+    font-family: 'Oswald', sans-serif;
+}
+
+.info-item{
+    height: 5vh;
+    font-size: 1vw;
+    padding: 0.5vw;
+}
 
 
 

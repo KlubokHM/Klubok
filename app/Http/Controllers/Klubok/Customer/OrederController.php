@@ -53,7 +53,7 @@ class OrederController extends Controller
 
             }else{
                 return redirect()
-                    ->route('customer.index.view.order.form')
+                    ->back()
                     ->with(['msg'=>"Что то пошло не так"])
                     ->withInput();
             }

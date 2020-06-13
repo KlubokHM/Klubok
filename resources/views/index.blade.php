@@ -42,15 +42,12 @@
                         </div>
                     <div class="div-product-body-footer">
                         <div class="product-basket">
-                            <a href="{{route('customer.index.view.basket.add', [$product])}}"
-                               onclick="event.preventDefault();
-                                                             document.getElementById('add-form').submit();">
-                                <img src="{{asset('img/cart.svg')}}" alt="" class="basket">
-                            </a>
-                            <form id="add-form" action="{{route('customer.index.view.basket.add', [$product])}}" method="POST"
-                                  style="display: none;">
-                                @csrf
-                            </form>
+                                <form id="add-form" action="{{route('customer.index.view.basket.add',[$product])}}" method="POST">
+                                    <button type="submit" class="btn btn-warning ">
+                                        <img src="{{asset('img/cart.svg')}}" alt="" class="basket">
+                                    </button>
+                                    @csrf
+                                </form>
                         </div>
                         <div class="product-price">
                             Цена:  {{$product ->price}}.00p

@@ -28,12 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $user_id = Auth::user()->getAuthIdentifier();
         $orders = User::all()->find($user_id)->orders;
 
         // dump($orders_id);
         return view('home')
             ->with('orders',$orders)
+            ->with('user',$user);
             ;
     }
 }

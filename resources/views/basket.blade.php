@@ -13,7 +13,7 @@
         <table id="cart" class="table table-hover table-condensed ">
             <thead>
             <tr>
-                <th style="width:50%">Продукты</th>
+                <th style="width:50%">Товары</th>
                 <th style="width:10%">Цена</th>
                 <th style="width:8%">Количество</th>
                 <th style="width:22%" class="text-center">Стоимость</th>

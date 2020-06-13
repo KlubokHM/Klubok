@@ -10,7 +10,7 @@
             <p class="lead"></p>
         </div>
 
-            <div class="col-md-10  order-md-1 container">
+            <div class="col-md-10  order-md-1 p-5 container" style="background: #000353; color: #dedee9 !important;">
                 <h4 class="mb-3">Заполните форму</h4>
                 <form class="needs-validation" novalidate method="POST" action="{{route('customer.index.view.order')}}">
                     @csrf
@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3">1
                         <label for="username">Email</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -104,14 +104,7 @@
             </div>
         </div>
 
-        <footer class="my-5 pt-2 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2017-2018 Company Name</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
+
     </div>
 
 
