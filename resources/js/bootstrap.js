@@ -1,9 +1,10 @@
+//СИЛА ГУГЛ ПЕРЕВОДЧИКА
 window._ = require('lodash');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * Мы загрузим jQuery и плагин Bootstrap jQuery, который обеспечивает поддержку
+ * функций Bootstrap на основе JavaScript, таких как модалы и вкладки. Этот код
+ * может быть изменен в соответствии с конкретными потребностями вашего приложения.
  */
 
 try {
@@ -14,9 +15,9 @@ try {
 } catch (e) {}
 
 /**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
+ Мы загрузим HTTP-библиотеку axios, которая позволяет нам легко отправлять запросы
+ на наш сервер Laravel. Эта библиотека автоматически обрабатывает отправку токена
+ CSRF в виде заголовка на основе значения файла cookie токена "XSRF".
  */
 
 window.axios = require('axios');
