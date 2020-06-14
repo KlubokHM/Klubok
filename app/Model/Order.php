@@ -17,6 +17,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function status(){
+        return $this->hasMany(Status::class,'id');
+    }
 
     public function getFullPrice(){
         $sum = 0;
@@ -41,6 +44,7 @@ class Order extends Model
         'building',
         'room_number',
         'index',
+        'status_id'
     ];
 
 }

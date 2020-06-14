@@ -51,6 +51,7 @@ class OrederController extends Controller
         $order ->final_price = $finalPrice;
         $order->user_id = $user_id;
         $order-> status = 1;
+        $order-> status_id = 1;
         $data = $request->all();
         $result =$order->fill($data)->save();
         session()->forget('order_id');

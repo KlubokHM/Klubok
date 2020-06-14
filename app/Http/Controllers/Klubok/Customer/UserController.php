@@ -65,7 +65,7 @@ class UserController extends Controller
                 'avatar'=>['sometimes','image','mimes:jpg,jpeg,png,svg,bmp','max:5000'],
             ]);
 
-        if($data->has('avatar')){
+        if(request()->has('avatar')){
             $avataruploaded = request()->file('avatar');
             $avatarname = time() . '.' . $avataruploaded ->getClientOriginalExtension();
             $avatarpath = public_path('/image/');

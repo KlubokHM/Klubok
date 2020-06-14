@@ -85,26 +85,26 @@
                                 </form>
                             </li>
                             <li class="item-dropdown">
-                                <a href="{{ route('customer.index.view.myOrders') }}"
+                                <a href="{{ route('customer.index.view.home') }}"
                                    onclick="event.preventDefault();
-                                                             document.getElementById('my-orders').submit();">
+                                                             document.getElementById('my-home').submit();">
                                     Мои Заказы
                                 </a>
 
 
-                                <form id="my-orders" action="{{ route('customer.index.view.myOrders') }}" method="get"
+                                <form id="my-home" action="{{ route('customer.index.view.home') }}" method="get"
                                       style="display: none;">
                                     @csrf
                                 </form>
                             </li>
                             @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
                                 <li class="item-dropdown">
-                                    <a href="{{ route('admin.index.view.orders') }}"
+                                    <a href="{{ route('admin.panel.view') }}"
                                        onclick="event.preventDefault();
                                                              document.getElementById('admin-form').submit();">
                                         Панель администратора
                                     </a>
-                                    <form id="admin-form" action="{{ route('admin.index.view.orders') }}" method="get"
+                                    <form id="admin-form" action="{{ route('admin.panel.view') }}" method="get"
                                           style="display: none;">
                                         @csrf
                                     </form>

@@ -20,10 +20,16 @@ Route::group([
     'namespace' => 'Klubok\Admin\Globals'
 ],function (){
     Route::group(['middleware' => 'is_admin'], function (){
+        Route::get('/adminpanel', 'AdminpanelController@index')->name('admin.panel.view');
         Route::get('/all_orders','OrderController@index')->name('admin.index.view.orders');
+        Route::get('/order/details/{id}','OrderController@details')->name('order.details');
+        Route::get('/orders/active','OrderController@active')->name('admin.index.view.orders.active');
+        Route::get('/orders/pay','OrderController@pay')->name('admin.index.view.orders.pay');
+        Route::get('/orders/finished','OrderController@finished')->name('admin.index.view.orders.finished');
+        Route::get('/orders/canceled','OrderController@canceled')->name('admin.index.view.orders.canceled');
     });
 });
-
+//admin.index.view.orders.active
 Route::get('send', 'MailController@send')->name('send');
 
 
@@ -36,11 +42,10 @@ Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/basket','BasketController@index')->name('customer.index.view.basket');
     Route::post('/basket/add/{id}', 'BasketController@add')->name('customer.index.view.basket.add');
     Route::post('/basket/remove/{id}', 'BasketController@remove')->name('customer.index.view.basket.remove');
-
             Route::group(['middleware'=>'verified',], function () {
             Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
-            Route::get('/myOrders', 'HomeController@index')->name('customer.index.view.myOrders');
+            Route::get('/home', 'HomeController@index')->name('customer.index.view.home');
             $methods = ['edit','store','update'];
             Route::resource('user','userController')->only($methods)->names('user');
             });
