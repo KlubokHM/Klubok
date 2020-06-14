@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Klubok\Admin\Globals;
 
 use App\Http\Controllers\Controller;
 use App\Model\Order;
+use App\Model\Status;
 use App\Model\User;
 use Illuminate\Http\Request;
 
@@ -22,10 +23,14 @@ class OrderController extends Controller
 
     public function details($order_id){
         $order = Order::all()->find($order_id);
+        $status_id =$order->status_id;
+        $status = Status::all()->find($status_id);
         $user = User::all()->find($order->user_id);
         return view('admin.globals.orders.detail_order')
             ->with('order',$order)
+            ->with('status',$status)
             ->with('user',$user);
+
     }
 
     public function active(){

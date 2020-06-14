@@ -18,7 +18,7 @@ class Order extends Model
     }
 
     public function status(){
-        return $this->hasMany(Status::class);
+        return $this->hasMany(Status::class,'id');
     }
 
     public function getFullPrice(){

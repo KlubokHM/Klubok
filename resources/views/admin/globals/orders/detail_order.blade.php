@@ -32,8 +32,10 @@
                                     <li class="list-group-item">Город : {{$order->city}}</li>
                                     <li class="list-group-item">Адрес : {{$order->street}} {{$order->building}} {{$order->room_number}}</li>
                                     <li class="list-group-item">Почтовый Индекс : {{$order->index}}</li>
-                                    <li class="list-group-item">Статус : {{$order->status}}</li>
-                                    <li class="list-group-item">Статус Оплаты : Ожидает оплаты</li>
+                                    <li class="list-group-item">Статус : {{$status->name}}</li>
+                                    <li class="list-group-item">Статус Оплаты : @if($order->is_pay) Олачен @else Ожидает Оплаты @endif
+
+                                    </li>
                                 </ul>
                     </div>
                 </div>
