@@ -15,7 +15,7 @@
                         <a class="nav-link text-light" href="{{route('admin.index.view.orders.pay')}}">Оплаченные</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{route('admin.index.view.orders.finished')}}">Завершонные</a>
+                        <a class="nav-link text-light" href="{{route('admin.index.view.orders.finished')}}">Завершенные</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{route('admin.index.view.orders.pay')}}">Отмененные</a>

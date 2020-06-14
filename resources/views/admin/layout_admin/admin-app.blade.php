@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="container">
-        <h4 class="mt-3 text-center">Панель администратора</h4>
+        <h4 class="mt-3 text-center"><a href="{{route('admin.panel.view')}}">Панель администратора</a></h4>
         <nav class="navbar mt-3 navbar-expand-lg navbar-dark bg-dark justify-content-between">
                 <ul class="navbar-nav justify-content-start">
                     <li class="nav-item ml-3">
