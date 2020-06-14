@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Klubok\Admin\Globals;
 
 use App\Http\Controllers\Controller;
 use App\Model\Order;
+use App\Model\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,72 +17,37 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return view('admin.globals.orders', compact('orders'));
+        return view('admin.globals.orders.orders', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function details($order_id){
+        $order = Order::all()->find($order_id);
+        $user = User::all()->find($order->user_id);
+        return view('admin.globals.orders.detail_order')
+            ->with('order',$order)
+            ->with('user',$user);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function active(){
+        $orders = Order::all()->where('status_id','<',5);
+        return view('admin.globals.orders.active-orders')
+            ->with('orders',$orders);
+    }
+    public function pay(){
+        $orders = Order::all()->where('is_pay','=',1);
+        return view('admin.globals.orders.pay-oprder')
+            ->with('orders',$orders);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function finished(){
+        $orders = Order::all()->where('status_id','=',5);
+        return view('admin.globals.orders.finished-order')
+            ->with('orders',$orders);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function canceled(){
+        $orders = Order::all()->where('status_id','=',6);
+        return view('admin.globals.orders.caceled-oprder')
+            ->with('orders',$orders);
     }
 }

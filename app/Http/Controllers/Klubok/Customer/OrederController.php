@@ -21,20 +21,6 @@ class OrederController extends Controller
         }
     }
 
-    public function orderValidate(Request $req) {
-        $orderVal = $req->validate([
-            'first_name'=>'required|string|min:2|max:50',
-            'second_name'=>'required|string|min:2|max:50',
-            'last_name'=>'string|min:2|max:50',
-            'email'=>'required|email|max:55',
-            'phone'=>'',
-            'city'=>'',
-            'street'=>'',
-            'building'=>'',
-            'room_number'=>'',
-            'index'=>''
-        ]);
-    }
 
     public function order(Request $request)
     {
@@ -65,6 +51,7 @@ class OrederController extends Controller
         $order ->final_price = $finalPrice;
         $order->user_id = $user_id;
         $order-> status = 1;
+        $order-> status_id = 1;
         $data = $request->all();
         $result =$order->fill($data)->save();
         session()->forget('order_id');
