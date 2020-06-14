@@ -10,17 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    protected function validator(array $data)
-    {
-
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:12','min:10'],
-            'city'=>['required', 'string', 'max:30',],
-            'avatar'=>['sometimes','image','mimes:jpg,jpeg,png,svg,bmp','max:5000'],
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -59,7 +48,6 @@ class UserController extends Controller
         $data=$request->validate(
             [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'phone' => ['required', 'string', 'max:12','min:10'],
                 'city'=>['required', 'string', 'max:30',],
                 'avatar'=>['sometimes','image','mimes:jpg,jpeg,png,svg,bmp','max:5000'],
@@ -72,7 +60,6 @@ class UserController extends Controller
             $avataruploaded->move($avatarpath,$avatarname);
             $data = [
                 'name' =>$request->name,
-                'email' =>$request->email,
                 'phone' =>$request->phone,
                 'city' =>$request->city,
                 'avatar'=> '/image/'. $avatarname,
@@ -88,7 +75,7 @@ class UserController extends Controller
 
         if($result){
             return redirect()
-                ->route('customer.index.view.myOrders')
+                ->route('customer.index.view.home')
                 ->with(['success' => 'Страница отредактированна']);
         }else{
             return back()

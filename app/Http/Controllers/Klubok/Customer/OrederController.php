@@ -75,5 +75,7 @@ class OrederController extends Controller
             }
 
         //dump($order->save());
+        //ПРоверка деваАска етить его жопу
+
     }
 }
