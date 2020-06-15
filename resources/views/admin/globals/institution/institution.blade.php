@@ -14,7 +14,9 @@
                         <li class="list-group-item text-dark">Почта : {{$instotution->email}}</li>
                         <li class="list-group-item text-dark">Телефон : {{$instotution->phone}}</li>
                         <li class="list-group-item text-dark">Адресс : {{$instotution->city}}, {{$instotution->address}}</li>
-                        <li class="list-group-item "><button class="btn p-2 btn-warning"><a href="#">Подробнее</a></button></li>
+                        <li class="list-group-item "><button class="btn p-2 btn-warning"><a href="#">Подробнее</a></button>
+                            <button class="btn p-2 btn-danger"><a href="{{route('admin.statements.remove', [$instotution->id])}}">Заблокировать</a></button>
+                        </li>
                     </ul>
 
                 </div>
