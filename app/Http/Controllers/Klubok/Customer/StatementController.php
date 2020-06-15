@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Klubok\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Model\Institution;
-use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,4 +51,6 @@ class StatementController extends Controller
     public function operator_statement(){
        return view('klubok.form.operator-statment');
     }
+
+
 }

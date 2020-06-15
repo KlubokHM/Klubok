@@ -40,7 +40,7 @@
                         <a class="nav-link text-light" href="#">Мастерклассы</a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-light" href="#">Заявки</a>
+                        <a class="nav-link text-light" href="{{route('admin.statements')}}">Заявки</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">

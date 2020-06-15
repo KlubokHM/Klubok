@@ -21,18 +21,31 @@ Route::group([
 ],function (){
     Route::group(['middleware' => 'is_admin'], function (){
         Route::get('/adminpanel', 'AdminpanelController@index')->name('admin.panel.view');
-        Route::get('/all_orders','OrderController@index')->name('admin.index.view.orders');
-        Route::get('/order/details/{id}','OrderController@details')->name('order.details');
-        Route::get('/orders/active','OrderController@active')->name('admin.index.view.orders.active');
-        Route::get('/orders/pay','OrderController@pay')->name('admin.index.view.orders.pay');
-        Route::get('/orders/finished','OrderController@finished')->name('admin.index.view.orders.finished');
-        Route::get('/orders/canceled','OrderController@canceled')->name('admin.index.view.orders.canceled');
-        Route::get('/products/all','ProductsController@index')->name('admin.index.view.products.all');
-        Route::get('/products/publish','ProductsController@is_publish')->name('admin.index.view.products.publish-products');
-        Route::get('/products/not_publish','ProductsController@is_not_publish')->name('admin.index.view.products.not-publish-products');
-        Route::get('/products/publish/{id}/edit','ProductsController@edit')->name('admin.index.view.products.publish-products.edit');
-        Route::post('/products/publish/update/{id}','ProductsController@update')->name('admin.index.view.products.publish-products.update');
-        Route::get('/institution','IstitutionController@index')->name('admin.index.view.institution');
+        Route::group(['prefix'=>'order'],function (){
+            Route::get('/all_orders','OrderController@index')->name('admin.index.view.orders');
+            Route::get('/details/{id}','OrderController@details')->name('order.details');
+            Route::get('/active','OrderController@active')->name('admin.index.view.orders.active');
+            Route::get('/pay','OrderController@pay')->name('admin.index.view.orders.pay');
+            Route::get('/finished','OrderController@finished')->name('admin.index.view.orders.finished');
+            Route::get('/canceled','OrderController@canceled')->name('admin.index.view.orders.canceled');
+        });
+        Route::group(['prefix'=>'order'],function (){
+            Route::get('/all','ProductsController@index')->name('admin.index.view.products.all');
+            Route::get('/publish','ProductsController@is_publish')->name('admin.index.view.products.publish-products');
+            Route::get('/not_publish','ProductsController@is_not_publish')->name('admin.index.view.products.not-publish-products');
+            Route::get('/publish/{id}/edit','ProductsController@edit')->name('admin.index.view.products.publish-products.edit');
+            Route::post('/publish/update/{id}','ProductsController@update')->name('admin.index.view.products.publish-products.update');
+        });
+        Route::group(['prefix' => 'institution'],function (){
+            Route::get('/','IstitutionController@index')->name('admin.index.view.institution');
+        });
+
+        Route::group(['prefix'=>'order'],function (){
+            Route::get('/','StatementController@index')->name('admin.statements');
+            Route::get('/disable','StatementController@disable_statments')->name('admin.statements.disable');
+            Route::get('/active/{id}','StatementController@activation_institution')->name('admin.statements.activation_institution');
+            Route::get('/remove/{id}','StatementController@remove_statment')->name('admin.statements.remove');
+        });
     });
 });
 
@@ -47,7 +60,7 @@ Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/basket','BasketController@index')->name('customer.index.view.basket');
     Route::post('/basket/add/{id}', 'BasketController@add')->name('customer.index.view.basket.add');
     Route::post('/basket/remove/{id}', 'BasketController@remove')->name('customer.index.view.basket.remove');
-            Route::group(['middleware'=>'verified',], function () {
+    Route::group(['middleware'=>'verified',], function () {
             Route::get('/basket/form', 'OrederController@index')->name('customer.index.view.order.form');
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
             Route::get('/home', 'HomeController@index')->name('customer.index.view.home');
