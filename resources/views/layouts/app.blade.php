@@ -88,7 +88,7 @@
                                 <a href="{{ route('customer.index.view.home') }}"
                                    onclick="event.preventDefault();
                                                              document.getElementById('my-home').submit();">
-                                    Мои Заказы
+                                    Личный Кабинет
                                 </a>
 
 
@@ -129,7 +129,10 @@
 <footer>
     <div class="info">
         <div class="info-box">
-
+            <ul class="roles-order">
+                <li class="role-item"><a href="{{route('customer.institution.statement')}}">Хочу стать контрагентом</a></li>
+                <li class="role-item"><a href="{{route('customer.operator.statement')}}">Хочу стать оператором</a></li>
+            </ul>
         </div>
         <div class="div coperaiting">
 

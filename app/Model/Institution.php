@@ -24,4 +24,18 @@ class Institution extends Model
         return $this->hasMany(Product::class);
     }
 
+    protected $fillable =
+    [
+        'full_name',
+        'name',
+        'phone',
+        'phone_reserve',
+        'email',
+        'address',
+        'index',
+        'site',
+        'discription',
+        'isPublish',
+        'is_order'
+    ];
 }

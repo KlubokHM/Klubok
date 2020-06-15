@@ -47,7 +47,6 @@ class OrederController extends Controller
 
         $user_id = Auth::user()->getAuthIdentifier();
         $finalPrice  = $order->getFullPrice();
-        dump($finalPrice);
         $order ->final_price = $finalPrice;
         $order->user_id = $user_id;
         $order-> status = 1;
@@ -55,21 +54,19 @@ class OrederController extends Controller
         $data = $request->all();
         $result =$order->fill($data)->save();
         session()->forget('order_id');
-        dump($result);
+
             if($result == true){
                 $data = [
                     'name'=>$order->first_name,
                     'id' => $order->id
                 ];
-               // Mail::to($order->email)->send(new TestMail($data));
-                return redirect()
-                    ->route('customer.index.view.basket')
+               Mail::to($order->email)->send(new TestMail($data));
+                return back()
                     ->with(['msg'=>"ваш заказ с номером {$order->id} принят"])
                     ->withInput();
 
             }else{
-                return redirect()
-                    ->back()
+                return back()
                     ->with(['msg'=>"Что то пошло не так"])
                     ->withInput();
             }

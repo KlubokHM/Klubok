@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=$request->validate(
+       $request->validate(
             [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -88,7 +88,7 @@ class UserController extends Controller
 
         if($result){
             return redirect()
-                ->route('customer.index.view.myOrders')
+                ->route('customer.index.view.home')
                 ->with(['success' => 'Страница отредактированна']);
         }else{
             return back()

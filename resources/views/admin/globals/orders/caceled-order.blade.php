@@ -3,7 +3,10 @@
 @section('order-place')
     @if(is_null($orders))
     @else
-        <h4 class="m-3 text-center">Отмененные Заказы</h4>
+        <h4 class="m-3 text-center">Отмененные
+
+
+            Заказы</h4>
         <table class="table">
             <thead>
             <tr>

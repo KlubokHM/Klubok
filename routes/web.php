@@ -27,10 +27,15 @@ Route::group([
         Route::get('/orders/pay','OrderController@pay')->name('admin.index.view.orders.pay');
         Route::get('/orders/finished','OrderController@finished')->name('admin.index.view.orders.finished');
         Route::get('/orders/canceled','OrderController@canceled')->name('admin.index.view.orders.canceled');
+        Route::get('/products/all','ProductsController@index')->name('admin.index.view.products.all');
+        Route::get('/products/publish','ProductsController@is_publish')->name('admin.index.view.products.publish-products');
+        Route::get('/products/not_publish','ProductsController@is_not_publish')->name('admin.index.view.products.not-publish-products');
+        Route::get('/products/publish/{id}/edit','ProductsController@edit')->name('admin.index.view.products.publish-products.edit');
+        Route::post('/products/publish/update/{id}','ProductsController@update')->name('admin.index.view.products.publish-products.update');
+        Route::get('/institution','IstitutionController@index')->name('admin.index.view.institution');
     });
 });
-//admin.index.view.orders.active
-Route::get('send', 'MailController@send')->name('send');
+
 
 
 Route::namespace('Klubok\Customer')->group(function(){
@@ -48,7 +53,11 @@ Route::namespace('Klubok\Customer')->group(function(){
             Route::get('/home', 'HomeController@index')->name('customer.index.view.home');
             $methods = ['edit','store','update'];
             Route::resource('user','userController')->only($methods)->names('user');
+            Route::get('statement/institution', 'StatementController@institution_statement')->name('customer.institution.statement');
+            Route::post('statement/institution/create', 'StatementController@create')->name('customer.institution.statement.create');
+            Route::get('statement/operator', 'StatementController@operator_statement')->name('customer.operator.statement');
             });
+
 
 
 });

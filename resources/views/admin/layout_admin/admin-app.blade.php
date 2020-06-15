@@ -31,13 +31,16 @@
                         <a class="nav-link  text-light" href="{{route('admin.index.view.orders')}}">Заказы<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-light" href="#">Товары</a>
+                        <a class="nav-link text-light" href="{{route('admin.index.view.products.all')}}">Товары</a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-light" href="#">Контрагенты</a>
+                        <a class="nav-link text-light" href="{{route('admin.index.view.institution')}}">Контрагенты</a>
                     </li>
                     <li class="nav-item ml-3">
                         <a class="nav-link text-light" href="#">Мастерклассы</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a class="nav-link text-light" href="#">Заявки</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
