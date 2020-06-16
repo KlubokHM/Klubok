@@ -14,6 +14,9 @@ class Categories extends Model
         return $this->belongsTo(Institution::class);
     }
 
-
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
 }

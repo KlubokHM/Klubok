@@ -112,7 +112,15 @@
                             @endif
                             @if(\Illuminate\Support\Facades\Auth::user()->isModerator())
                                 <li class="item-dropdown">
-                                    Moderator
+                                    <a href="{{ route('moderator.index') }}"
+                                       onclick="event.preventDefault();
+                                                             document.getElementById('moderator-form').submit();">
+                                        Панель администратора
+                                    </a>
+                                    <form id="moderator-form" action="{{ route('moderator.index') }}" method="get"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
                                 </li>
                             @endif
                         </ul>

@@ -22,7 +22,14 @@ class Product extends Model
 }
 
 protected $fillable = [
-    'is_publish'
+    "institution_id" ,
+  "categories_id",
+  "is_publish",
+  "name",
+  "sub_name",
+  "slug",
+  "price",
+  "description",
 ];
 }
 /*

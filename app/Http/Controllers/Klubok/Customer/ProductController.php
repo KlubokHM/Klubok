@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        $institutions = Institution::all();
+        $institutions = Institution::all()->where('isPublish','=',1);;
 
         return view('klubok.products',compact('products','institutions'));
 
@@ -26,12 +26,12 @@ class ProductController extends Controller
 
     public function institution($id){
         $products = Institution::all()->find($id)->products_inst;
-        $institutions = Institution::all();
+        $institutions = Institution::all()->where('isPublish','=',1);
         return view('klubok.products',compact('products','institutions'));
     }
 
     public function category($id){
-        $institutions = Institution::all();
+        $institutions = Institution::all()->where('isPublish','=',1);;
         $products = Categories::all()->find($id)->products;
         return view('klubok.products',compact('products','institutions'));
 

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Klubok\Admin\Moderator;
 use App\Http\Controllers\Controller;
 use App\Model\Categories;
 use App\Model\Institution;
-use App\Model\Order;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\In;
 
-class OrderController extends Controller
+class ModeratorCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +18,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-
+        $user_id = Auth::user()->getAuthIdentifier();
+        $org_id = User::all()->find($user_id)->institutions_id;
+        $categories = Institution::all()->find($org_id)->categories;
+        return view('moderator.category.categories',compact('categories'));
     }
 
     /**
@@ -27,9 +29,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+       dd($request->all());
     }
 
     /**
@@ -40,7 +42,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = [
+            'name' => $request->name,
+            'slug' => random_int(1,1000) .$request->name . random_int(1,1000),
+        ];
+        Categories::create($data)->save();
+        return back();
     }
 
     /**
@@ -62,7 +70,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -72,9 +80,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $data = ['name' => $request->name];
+        $category = Categories::all()->find($request->id);
+        $result = $category->fill($data)->update();
+        if($result){
+           return back()->with('msg',"Success");
+        }
     }
 
     /**
@@ -83,8 +96,19 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
     }
+
+    public function delete(Request $request){
+        $result = Categories::all()->find($request->id)->delete();
+        if($result){
+            return back()->with('msg','success');
+        }else{
+            return back()->withErrors()->with('msg', 'error');
+        }
+}
+
+
 }

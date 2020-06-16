@@ -50,6 +50,18 @@ Route::group([
 });
 
 
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'Klubok\Admin\Moderator'
+],function (){
+    Route::group(['middleware' => 'is_admin', 'prefix' => '/moderator'], function (){
+        Route::resource('/category', 'ModeratorCategoryController')->names('moderator.category');
+        Route::post('/category/delete', 'ModeratorCategoryController@delete')->name('moderator.category.delete');
+        Route::resource('/products', 'ModeratorProductsController')->names('moderator.products');
+        Route::get('/index', 'ModeratorController@index')->name('moderator.index');
+    });
+});
+
 
 Route::namespace('Klubok\Customer')->group(function(){
     Route::get('/','LandingController@index')->name('customer.index.view');
@@ -65,7 +77,7 @@ Route::namespace('Klubok\Customer')->group(function(){
             Route::post('/order', 'OrederController@order')->name('customer.index.view.order');
             Route::get('/home', 'HomeController@index')->name('customer.index.view.home');
             $methods = ['edit','store','update'];
-            Route::resource('user','userController')->only($methods)->names('user');
+            Route::resource('user','UserController')->only($methods)->names('user');
             Route::get('statement/institution', 'StatementController@institution_statement')->name('customer.institution.statement');
             Route::post('statement/institution/create', 'StatementController@create')->name('customer.institution.statement.create');
             Route::get('statement/operator', 'StatementController@operator_statement')->name('customer.operator.statement');
